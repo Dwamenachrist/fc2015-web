@@ -1,0 +1,51 @@
+{
+  "extends": ["stylelint-config-standard"],
+  "rules": {
+    "selector-class-pattern": null,
+    "custom-property-pattern": null,
+    "value-keyword-case": null,
+    "import-notation": null,
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["global"]
+      }
+    ],
+    "no-descending-specificity": null,
+    "declaration-property-value-no-unknown": null,
+    "media-feature-range-notation": "prefix"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.module.css"],
+      "rules": {
+        "color-no-hex": [
+          true,
+          {
+            "message": "Use a --s-* or --c-* token, never a hex colour (DESIGN_TOKENS.md section 6, rule 7)."
+          }
+        ],
+        "color-named": [
+          "never",
+          {
+            "message": "Use a --s-* or --c-* token, never a named colour."
+          }
+        ],
+        "function-disallowed-list": [
+          ["rgb", "rgba", "hsl", "hsla"],
+          {
+            "message": "Use a --s-* or --c-* token, never a raw colour function."
+          }
+        ],
+        "declaration-property-value-disallowed-list": [
+          {
+            "/.*/": ["/var\\(--p-color/"]
+          },
+          {
+            "message": "Components may not use colour primitives (--p-color-*). Use --s-* or --c-* tokens."
+          }
+        ]
+      }
+    }
+  ]
+}

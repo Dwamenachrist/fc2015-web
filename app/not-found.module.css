@@ -1,0 +1,131 @@
+.wrap {
+  position: relative;
+  display: grid;
+  align-items: center;
+  gap: var(--s-space-stack-l);
+  min-height: 70svh;
+  padding-block: var(--s-space-section);
+}
+
+/* An assistant referee's flag, raised */
+.flag {
+  position: relative;
+  width: 6rem;
+  height: 9rem;
+  animation: raise 900ms var(--p-ease-standard) both;
+  transform-origin: bottom left;
+}
+
+.pole {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background-color: var(--s-color-text-secondary);
+  border-radius: 3px;
+}
+
+.cloth {
+  position: absolute;
+  top: 0;
+  left: 6px;
+  width: 5.5rem;
+  height: 4.25rem;
+  background: var(--c-flag-cloth);
+  border-radius: 0 4px 4px 0;
+  animation: wave 1.6s ease-in-out 900ms infinite alternate;
+  transform-origin: left center;
+}
+
+.text {
+  display: grid;
+  gap: var(--p-space-12);
+}
+
+.code {
+  color: var(--s-color-text-brand);
+  font-family: var(--s-font-display);
+  font-size: var(--s-type-h3-size);
+  font-weight: var(--s-type-heading-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+}
+
+.title {
+  font-size: var(--s-type-display-xl-size);
+  line-height: var(--s-type-display-xl-leading);
+}
+
+.lede {
+  max-width: 32rem;
+  color: var(--s-color-text-secondary);
+  font-family: var(--s-font-editorial);
+  font-size: var(--s-type-editorial-l-size);
+  font-style: italic;
+  font-weight: var(--s-type-editorial-weight);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--p-space-24);
+  margin-top: var(--p-space-12);
+}
+
+.link {
+  color: var(--s-color-text-link);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-label-tracking);
+  text-decoration: underline;
+  text-transform: uppercase;
+  text-underline-offset: 4px;
+}
+
+.crest {
+  position: absolute;
+  right: var(--s-layout-margin);
+  bottom: var(--p-space-24);
+  width: auto;
+  height: 10rem;
+  opacity: 0.08;
+}
+
+@keyframes raise {
+  from {
+    transform: rotate(-70deg);
+  }
+
+  to {
+    transform: none;
+  }
+}
+
+@keyframes wave {
+  from {
+    transform: skewY(0deg) scaleX(1);
+  }
+
+  to {
+    transform: skewY(-6deg) scaleX(0.94);
+  }
+}
+
+@media (min-width: 768px) {
+  .wrap {
+    grid-template-columns: auto 1fr;
+    gap: var(--p-space-64);
+  }
+
+  .crest {
+    height: 20rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flag,
+  .cloth {
+    animation: none;
+  }
+}

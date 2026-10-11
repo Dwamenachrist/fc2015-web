@@ -1,0 +1,84 @@
+.strip {
+  padding-block: var(--p-space-48);
+  background-color: var(--s-color-bg-sunken);
+  text-align: center;
+}
+
+.label {
+  margin-bottom: var(--p-space-16);
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(9rem, 12rem));
+  justify-content: center;
+  gap: var(--p-space-12);
+}
+
+.logo {
+  display: grid;
+  place-items: center;
+  min-height: 5rem;
+  padding: var(--p-space-12);
+  background-color: var(--c-card-bg);
+  border-radius: var(--c-card-radius);
+}
+
+.logo img {
+  width: auto;
+  max-height: 3rem;
+  filter: grayscale(1);
+  opacity: var(--c-partner-logo-opacity);
+}
+
+.slot {
+  display: grid;
+  place-content: center;
+  gap: var(--p-space-2);
+  min-height: 5rem;
+  padding: var(--p-space-12);
+  border: 1px dashed var(--s-color-border-default);
+  border-radius: var(--c-card-radius);
+  transition: border-color var(--s-motion-hover);
+}
+
+.slot:hover {
+  border-color: var(--s-color-border-brand);
+}
+
+.slotTitle {
+  font-family: var(--s-font-display);
+  font-size: var(--p-size-text-16);
+  font-weight: var(--s-type-heading-weight);
+  text-transform: uppercase;
+}
+
+.slotState {
+  color: var(--s-color-text-brand);
+  font-family: var(--s-font-editorial);
+  font-size: var(--s-type-body-s-size);
+  font-style: italic;
+  font-weight: var(--s-type-editorial-weight);
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--p-space-8);
+  margin-top: var(--p-space-20);
+  color: var(--s-color-text-link);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-label-tracking);
+  text-transform: uppercase;
+}
+
+.more svg {
+  width: 1rem;
+  height: 1rem;
+}

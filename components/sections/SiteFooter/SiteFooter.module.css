@@ -1,0 +1,145 @@
+.footer {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  border-top: 3px solid var(--s-color-border-brand);
+}
+
+/* Atlanta City: giant faded crest watermark */
+.watermark {
+  position: absolute;
+  top: 50%;
+  right: -8rem;
+  z-index: -1;
+  opacity: 0.05;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+
+.top {
+  display: grid;
+  gap: var(--s-space-stack-l);
+  padding-block: var(--s-space-section) var(--s-space-stack-l);
+}
+
+.brand {
+  display: grid;
+  justify-items: start;
+  gap: var(--p-space-12);
+}
+
+.brand img {
+  width: auto;
+  height: 4.5rem;
+}
+
+.name {
+  font-family: var(--s-font-display);
+  font-size: var(--s-type-h3-size);
+  font-weight: var(--s-type-heading-weight);
+  text-transform: uppercase;
+}
+
+.tagline {
+  max-width: 16rem;
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-label-tracking);
+  text-transform: uppercase;
+}
+
+.socials {
+  display: flex;
+  gap: var(--p-space-12);
+  margin-top: var(--p-space-8);
+}
+
+.socials a {
+  display: inline-grid;
+  place-items: center;
+  width: var(--p-space-40);
+  height: var(--p-space-40);
+  border: 1px solid var(--s-color-border-default);
+  border-radius: var(--s-radius-pill);
+}
+
+.socials a:hover {
+  border-color: var(--s-color-border-brand);
+  color: var(--s-color-text-brand);
+}
+
+.socials svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}
+
+.columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--s-space-stack-m);
+}
+
+.colTitle {
+  margin-bottom: var(--p-space-12);
+  color: var(--s-color-text-brand);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.colLinks {
+  display: grid;
+  gap: var(--p-space-8);
+  color: var(--s-color-text-secondary);
+}
+
+.colLinks a:hover {
+  color: var(--s-color-text-primary);
+}
+
+/* Arsenal: bottom legal bar */
+.bar {
+  border-top: 1px solid var(--s-color-border-subtle);
+}
+
+.barInner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: var(--p-space-12);
+  padding-block: var(--p-space-20);
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-body-s-size);
+}
+
+.legal {
+  display: flex;
+  gap: var(--p-space-20);
+}
+
+.legal a:hover,
+.linkButton:hover {
+  color: var(--s-color-text-primary);
+}
+
+.linkButton {
+  padding: 0;
+  background: none;
+  border: 0;
+  color: inherit;
+  font-size: inherit;
+}
+
+@media (min-width: 768px) {
+  .columns {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .top {
+    grid-template-columns: 1fr 2fr;
+  }
+}

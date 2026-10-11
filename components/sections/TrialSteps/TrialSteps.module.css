@@ -1,0 +1,53 @@
+.steps {
+  display: grid;
+  gap: var(--s-layout-gutter);
+  counter-reset: step;
+}
+
+.step {
+  position: relative;
+  display: grid;
+  align-content: start;
+  gap: var(--p-space-8);
+  padding: var(--p-space-24);
+  overflow: hidden;
+  background-color: var(--c-card-bg);
+  border: 1px solid var(--c-card-border);
+  border-top: 3px solid var(--s-color-border-brand);
+  border-radius: var(--c-card-radius);
+}
+
+/* Big faded step number behind the text */
+.num {
+  position: absolute;
+  top: calc(-1 * var(--p-space-16));
+  right: var(--p-space-16);
+  color: var(--c-player-number-color);
+  font-family: var(--s-font-display);
+  font-size: var(--s-type-display-l-size);
+  font-weight: var(--s-type-heading-weight);
+  line-height: var(--p-leading-1-00);
+}
+
+.label {
+  color: var(--s-color-text-brand);
+  font-size: var(--s-type-tag-size);
+  font-weight: var(--s-type-tag-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: var(--s-type-h3-size);
+  line-height: var(--s-type-h3-leading);
+}
+
+.text {
+  color: var(--s-color-text-secondary);
+}
+
+@media (min-width: 900px) {
+  .steps {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

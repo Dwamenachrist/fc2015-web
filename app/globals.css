@@ -1,0 +1,148 @@
+/* Global base styles. The only stylesheet (with tokens.css) allowed to use
+   primitive tokens or raw values — see .stylelintrc.json. */
+@import "../styles/tokens.css";
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--s-layout-nav-height) + 3px);
+
+  /* iOS Safari still needs the prefix. */
+  /* stylelint-disable-next-line property-no-vendor-prefix */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  background-color: var(--s-color-bg-page);
+  color: var(--s-color-text-primary);
+  font-family: var(--s-font-body);
+  font-size: var(--s-type-body-m-size);
+  line-height: var(--s-type-body-m-leading);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizelegibility;
+}
+
+img,
+svg,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--s-font-display);
+  font-weight: var(--s-type-heading-weight);
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* :where() keeps specificity at zero so component styles always win. */
+:where(ul[role="list"], ol[role="list"]) {
+  list-style: none;
+  padding: 0;
+}
+
+:focus-visible {
+  outline: var(--s-focus-ring);
+  outline-offset: var(--s-focus-offset);
+}
+
+::selection {
+  background: var(--p-color-gold-500);
+  color: var(--p-color-ink-900);
+}
+
+/* ---------- Utilities ---------- */
+
+.container {
+  width: 100%;
+  max-width: calc(var(--s-layout-max-width) + 2 * var(--s-layout-margin));
+  margin-inline: auto;
+  padding-inline: var(--s-layout-margin);
+}
+
+.section {
+  padding-block: var(--s-space-section);
+}
+
+.visually-hidden {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.skip-link {
+  position: absolute;
+  top: var(--p-space-8);
+  left: var(--p-space-8);
+  z-index: var(--s-z-toast);
+  padding: var(--p-space-12) var(--p-space-16);
+  background: var(--p-color-gold-500);
+  color: var(--p-color-ink-900);
+  font-weight: var(--p-weight-bold);
+  border-radius: var(--s-radius-control);
+  transform: translateY(-200%);
+}
+
+.skip-link:focus {
+  transform: none;
+}
+
+/* Brand pattern (SITE_BLUEPRINT §4.6): colour comes from currentColor so one
+   SVG tile serves every surface. */
+.brand-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: currentcolor;
+  mask-image: url("/brand/pattern.svg");
+  mask-size: 64px 64px;
+  mask-repeat: repeat;
+}

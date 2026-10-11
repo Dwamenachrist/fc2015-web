@@ -1,0 +1,164 @@
+.partners {
+  background-color: var(--s-color-bg-sunken);
+}
+
+.title {
+  margin-bottom: var(--s-space-stack-l);
+  font-size: var(--s-type-h2-size);
+  line-height: var(--s-type-h2-leading);
+  text-align: center;
+}
+
+.tier + .tier {
+  margin-top: var(--s-space-stack-l);
+}
+
+/* Man United: small centred tier label */
+.tierLabel {
+  margin-bottom: var(--s-space-stack-s);
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.logos {
+  display: grid;
+  gap: var(--s-layout-gutter);
+}
+
+.principal {
+  grid-template-columns: 1fr;
+}
+
+.official,
+.supporter {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.logo a {
+  display: grid;
+  place-items: center;
+  height: 100%;
+  min-height: 6rem;
+  padding: var(--p-space-16);
+  background-color: var(--c-card-bg);
+  border-radius: var(--c-card-radius);
+}
+
+.logoImg {
+  width: auto;
+  max-height: 3.5rem;
+  filter: grayscale(1);
+  opacity: var(--c-partner-logo-opacity);
+  transition:
+    opacity var(--s-motion-hover),
+    filter var(--s-motion-hover);
+}
+
+.logo a:hover .logoImg,
+.logo a:focus-visible .logoImg {
+  filter: none;
+  opacity: var(--c-partner-logo-opacity-hover);
+}
+
+/* Empty principal slot: a sales tool, not filler (SITE_BLUEPRINT §3.7). */
+.slot {
+  display: grid;
+  place-content: center;
+  gap: var(--p-space-4);
+  min-height: 7.5rem;
+  padding: var(--p-space-16);
+  border: 1px dashed var(--s-color-border-default);
+  border-radius: var(--c-card-radius);
+  text-align: center;
+  transition:
+    border-color var(--s-motion-hover),
+    background-color var(--s-motion-hover);
+}
+
+.slot:hover {
+  background-color: var(--c-card-bg);
+  border-color: var(--s-color-border-brand);
+}
+
+.slotTier {
+  font-family: var(--s-font-display);
+  font-size: var(--p-size-text-20);
+  font-weight: var(--s-type-heading-weight);
+  text-transform: uppercase;
+}
+
+.slotState {
+  color: var(--s-color-text-brand);
+  font-family: var(--s-font-editorial);
+  font-style: italic;
+  font-weight: var(--s-type-editorial-weight);
+}
+
+/* ---------- Pitch box: ink card + gold crest pattern ---------- */
+
+.pitch {
+  position: relative;
+  isolation: isolate;
+  display: grid;
+  gap: var(--s-space-stack-m);
+  margin-top: var(--s-space-stack-xl);
+  padding: var(--p-space-32) var(--p-space-24);
+  overflow: hidden;
+  background-color: var(--c-card-bg);
+  border: 1px solid var(--s-color-border-brand);
+  border-radius: var(--c-card-radius);
+}
+
+.pattern {
+  z-index: -1;
+  color: var(--c-pitch-pattern);
+}
+
+.pitchText {
+  display: grid;
+  gap: var(--p-space-8);
+  max-width: 40rem;
+}
+
+.kicker {
+  color: var(--s-color-text-brand);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.pitchTitle {
+  font-size: var(--s-type-h3-size);
+  line-height: var(--s-type-h3-leading);
+}
+
+.pitchActions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--p-space-12);
+}
+
+@media (min-width: 768px) {
+  .principal {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .official {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .supporter {
+    grid-template-columns: repeat(6, 1fr);
+  }
+
+  .pitch {
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: var(--p-space-48);
+  }
+}

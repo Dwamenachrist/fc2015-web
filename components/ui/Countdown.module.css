@@ -1,0 +1,68 @@
+.countdown {
+  display: block;
+}
+
+.units {
+  display: flex;
+  gap: var(--p-space-12);
+  padding: 0;
+  list-style: none;
+}
+
+.unit {
+  display: grid;
+  justify-items: center;
+  min-width: 3.5rem;
+  padding: var(--p-space-12) var(--p-space-8);
+  background-color: var(--c-countdown-bg);
+  border: 1px solid var(--s-color-border-subtle);
+  border-radius: var(--s-radius-control);
+}
+
+.num {
+  font-family: var(--s-font-display);
+  font-size: var(--s-type-h2-size);
+  font-weight: var(--s-type-heading-weight);
+  line-height: var(--p-leading-1-00);
+  font-variant-numeric: tabular-nums;
+}
+
+.label {
+  margin-top: var(--p-space-4);
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-tag-size);
+  font-weight: var(--s-type-tag-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.status {
+  font-family: var(--s-font-display);
+  font-size: var(--s-type-h3-size);
+  font-weight: var(--s-type-heading-weight);
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .unit {
+    min-width: 5rem;
+  }
+}
+
+/* Compact version for the homepage match card */
+.sm .units {
+  gap: var(--p-space-4);
+}
+
+.sm .unit {
+  min-width: 2.75rem;
+  padding: var(--p-space-8) var(--p-space-4);
+}
+
+.sm .num {
+  font-size: var(--p-size-text-20);
+}
+
+.sm .label {
+  font-size: 0.625rem;
+}

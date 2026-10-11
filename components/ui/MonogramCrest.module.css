@@ -1,0 +1,17 @@
+.crest {
+  flex: none;
+}
+
+.shield {
+  fill: var(--s-color-bg-surface);
+  stroke: var(--s-color-text-disabled);
+  stroke-width: 2.5;
+}
+
+.text {
+  fill: var(--s-color-text-secondary);
+  font-family: var(--s-font-display);
+  font-size: 22px;
+  font-weight: var(--s-type-heading-weight);
+  letter-spacing: 0.02em;
+}

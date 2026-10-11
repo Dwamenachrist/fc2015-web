@@ -1,0 +1,210 @@
+.trials {
+  position: relative;
+}
+
+.layout {
+  display: grid;
+  gap: var(--s-layout-gutter);
+}
+
+.briefing,
+.formCard {
+  overflow: hidden;
+  border-radius: var(--c-card-radius);
+}
+
+.briefMedia {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.briefBody {
+  display: grid;
+  gap: var(--s-space-stack-s);
+  padding: var(--p-space-24);
+}
+
+.kicker {
+  color: var(--s-color-text-brand);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.ages {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--p-space-8);
+}
+
+.age {
+  display: grid;
+  gap: var(--p-space-4);
+  padding: var(--p-space-12);
+  background-color: var(--s-color-bg-surface);
+  border: 1px solid var(--s-color-border-subtle);
+  border-radius: var(--s-radius-control);
+}
+
+.ageName {
+  font-family: var(--s-font-display);
+  font-size: var(--p-size-text-24);
+  font-weight: var(--s-type-heading-weight);
+  line-height: var(--p-leading-1-00);
+  text-transform: uppercase;
+}
+
+.ageDetail {
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-tag-size);
+  line-height: var(--p-leading-1-40);
+}
+
+.eligibility {
+  color: var(--s-color-text-secondary);
+  font-size: var(--s-type-body-s-size);
+}
+
+.facts {
+  display: grid;
+  gap: var(--p-space-16);
+  padding-block: var(--p-space-16);
+  border-block: 1px solid var(--s-color-border-subtle);
+}
+
+.facts dd {
+  margin-top: var(--p-space-4);
+  color: var(--s-color-text-secondary);
+}
+
+.bring {
+  display: grid;
+  gap: var(--p-space-4);
+  padding-left: var(--p-space-20);
+}
+
+/* ---------- Form card ---------- */
+
+.formCard {
+  padding: var(--p-space-24);
+}
+
+.form {
+  display: grid;
+  gap: var(--s-space-stack-s);
+}
+
+.formTitle {
+  font-size: var(--s-type-h3-size);
+  line-height: var(--s-type-h3-leading);
+}
+
+.formTitle:focus {
+  outline: none;
+}
+
+.formIntro {
+  margin-top: var(--p-space-4);
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-body-s-size);
+}
+
+.row {
+  display: grid;
+  gap: var(--s-space-stack-s);
+}
+
+.dobField {
+  display: contents;
+}
+
+.guardian {
+  display: grid;
+  gap: var(--s-space-stack-s);
+  padding: var(--p-space-16);
+  border: 1px solid var(--s-color-border-brand);
+  border-radius: var(--s-radius-control);
+}
+
+.guardianLegend {
+  padding-inline: var(--p-space-8);
+  color: var(--s-color-text-brand);
+  font-size: var(--s-type-body-s-size);
+  font-weight: var(--p-weight-bold);
+}
+
+.inlineLink {
+  color: var(--s-color-text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.success {
+  display: grid;
+  justify-items: start;
+  gap: var(--s-space-stack-s);
+}
+
+.successIcon {
+  display: grid;
+  place-items: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  background-color: var(--s-color-feedback-success);
+  border-radius: var(--s-radius-pill);
+  color: var(--s-color-bg-page);
+}
+
+.successIcon svg {
+  width: 2rem;
+  height: 2rem;
+}
+
+.summary {
+  display: grid;
+  gap: var(--p-space-8);
+  width: 100%;
+  padding: var(--p-space-16);
+  background-color: var(--s-color-bg-surface);
+  border-radius: var(--s-radius-control);
+  font-size: var(--s-type-body-s-size);
+}
+
+.summary div {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--p-space-16);
+}
+
+.summary dt {
+  color: var(--s-color-text-muted);
+}
+
+.summary dd {
+  font-weight: var(--p-weight-semibold);
+  text-align: right;
+}
+
+@media (min-width: 768px) {
+  .row {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+  }
+
+  .briefBody,
+  .formCard {
+    padding: var(--p-space-40);
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 5fr 7fr;
+    align-items: start;
+  }
+}

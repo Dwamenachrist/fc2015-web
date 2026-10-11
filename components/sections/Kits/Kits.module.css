@@ -1,0 +1,95 @@
+/* Mobile: a swipe row with the next card peeking in (SITE_BLUEPRINT §3.6). */
+.list {
+  display: grid;
+  grid-auto-columns: 85%;
+  grid-auto-flow: column;
+  gap: var(--s-layout-gutter);
+  margin-inline: calc(-1 * var(--s-layout-margin));
+  padding-inline: var(--s-layout-margin);
+  padding-bottom: var(--p-space-8);
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-padding-inline: var(--s-layout-margin);
+  scrollbar-width: thin;
+}
+
+.card {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  overflow: hidden;
+  background-color: var(--s-color-bg-surface);
+  border: 1px solid var(--s-color-border-subtle);
+  border-radius: var(--c-card-radius);
+  scroll-snap-align: start;
+}
+
+.head {
+  padding: var(--p-space-24) var(--p-space-24) 0;
+}
+
+.label {
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.name {
+  font-size: var(--s-type-h2-size);
+  line-height: var(--s-type-h2-leading);
+}
+
+/* Studio spotlight behind the product: the only gradient on this band. */
+.stage {
+  display: grid;
+  place-items: center;
+  padding: var(--p-space-24) var(--p-space-40);
+  background: var(--c-kit-spotlight);
+}
+
+.stage svg {
+  max-width: 22rem;
+  filter: drop-shadow(var(--c-kit-shadow));
+}
+
+.body {
+  display: grid;
+  gap: var(--p-space-12);
+  padding: var(--p-space-24);
+}
+
+.description {
+  color: var(--s-color-text-secondary);
+}
+
+.sizes {
+  font-size: var(--s-type-body-s-size);
+}
+
+.meta {
+  margin-right: var(--p-space-8);
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-tag-size);
+  font-weight: var(--s-type-tag-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.price {
+  font-family: var(--s-font-display);
+  font-size: var(--s-type-h3-size);
+  font-weight: var(--s-type-heading-weight);
+  text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+  .list {
+    grid-auto-columns: auto;
+    grid-auto-flow: row;
+    grid-template-columns: repeat(2, 1fr);
+    margin-inline: 0;
+    padding-inline: 0;
+    overflow: visible;
+  }
+}

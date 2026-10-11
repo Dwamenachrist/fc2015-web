@@ -1,0 +1,49 @@
+.banner {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  background-color: var(--c-banner-bg);
+  border-bottom: 3px solid var(--s-color-border-brand);
+}
+
+.pattern {
+  z-index: -1;
+  color: var(--c-banner-pattern);
+}
+
+.inner {
+  display: grid;
+  gap: var(--p-space-8);
+  padding-block: var(--p-space-48) var(--p-space-40);
+}
+
+.kicker {
+  color: var(--s-color-text-brand);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.title {
+  font-size: var(--s-type-display-l-size);
+  font-weight: var(--s-type-display-l-weight);
+  line-height: var(--s-type-display-l-leading);
+  letter-spacing: var(--s-type-display-l-tracking);
+}
+
+.subtitle {
+  max-width: 40rem;
+  color: var(--s-color-text-secondary);
+  font-family: var(--s-font-editorial);
+  font-size: var(--s-type-editorial-l-size);
+  font-style: italic;
+  font-weight: var(--s-type-editorial-weight);
+  line-height: var(--s-type-editorial-l-leading);
+}
+
+@media (min-width: 768px) {
+  .inner {
+    padding-block: var(--p-space-80) var(--p-space-64);
+  }
+}

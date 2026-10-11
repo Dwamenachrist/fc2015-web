@@ -1,0 +1,502 @@
+/* ==========================================================================
+   FC 2015 — Design Tokens v2.0
+   Source of truth for every colour, type, space and motion value on the site.
+   Rationale and evidence for each value: DESIGN_TOKENS.md
+
+   Three tiers (structure taken from Man United's mufc-web-tokens package):
+     --p-*  primitives  raw values. Never used directly in components.
+     --s-*  semantic    what a value is FOR. Components use these.
+     --c-*  component   per-component overrides, built from semantic tokens.
+
+   Surfaces (taken from Man United's colour-sets): set data-surface="gold" or
+   data-surface="blue" on a section and every --s-color-* inside it remaps.
+
+   Fonts are NOT imported here. In Next.js, next/font sets --font-oswald,
+   --font-inter and --font-fraunces on <html>; the fallbacks below cover the
+   gap until then.
+   ========================================================================== */
+
+:root {
+  /* ------------------------------------------------------------------------
+     1. PRIMITIVES — colour
+     ------------------------------------------------------------------------ */
+
+  /* Gold: sampled from assets-src/brand/crest-client-original.png (highlight → shadow).
+     500 is the PRD-signed brand gold and matches the crest mid-tone (#E4A848). */
+  --p-color-gold-200: #f5d48a;
+  --p-color-gold-300: #f0c060; /* crest highlight */
+  --p-color-gold-500: #e5a93c; /* PRD primary */
+  --p-color-gold-600: #cc9030; /* crest mid-shadow */
+  --p-color-gold-700: #b47824; /* crest shadow */
+  --p-color-gold-800: #7a4e10;
+  --p-color-gold-metallic: #d4af37; /* PRD alternate; print/merch only */
+
+  /* Blue: 500 and 700 are PRD-signed. 600 is the crest tri-bar as it
+     actually renders. 300 is the only blue legible as text on dark. */
+  --p-color-blue-300: #5b9bff;
+  --p-color-blue-500: #0047ab; /* PRD accent */
+  --p-color-blue-600: #0024a0; /* crest tri-bar */
+  --p-color-blue-700: #0a3a82; /* PRD accent alternate */
+  --p-color-blue-900: #061a3d;
+
+  /* Ink: blue-black neutrals. PRD base values plus steps between them.
+     Arsenal (#04041C, #151925) and Man United dark sets are also blue-black,
+     never neutral grey. */
+  --p-color-ink-1000: #000000; /* crest shield field */
+  --p-color-ink-950: #05070c;
+  --p-color-ink-900: #0a0e17; /* PRD base */
+  --p-color-ink-850: #0f172a; /* PRD base alternate */
+  --p-color-ink-800: #161f30; /* PRD card surface */
+  --p-color-ink-700: #1f2a40;
+  --p-color-ink-600: #2c3a55;
+
+  --p-color-slate-100: #f1f5f9;
+  --p-color-slate-300: #cbd5e1;
+  --p-color-slate-400: #94a3b8; /* PRD muted text */
+  --p-color-slate-500: #64748b;
+  --p-color-white: #ffffff;
+
+  /* Status: match results (WIN / DRAW / LOSS) and form feedback. */
+  --p-color-green-400: #3ddc84;
+  --p-color-red-400: #f05252;
+
+  /* ------------------------------------------------------------------------
+     2. PRIMITIVES — type
+     ------------------------------------------------------------------------ */
+
+  /* Families follow the signed PRD §6: Oswald display, Inter body.
+     Oswald is also Atlanta City's own open-source heading fallback in its
+     Webflow CSS. Fraunces italic is Atlanta City's real subheading face. */
+  --p-font-oswald: var(--font-oswald, "Oswald"), "Arial Narrow", Impact, sans-serif;
+  --p-font-inter: var(--font-inter, "Inter"), system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --p-font-fraunces: var(--font-fraunces, "Fraunces"), Georgia, "Times New Roman", serif;
+
+  --p-weight-regular: 400;
+  --p-weight-medium: 500;
+  --p-weight-semibold: 600;
+  --p-weight-bold: 700;
+
+  /* Static sizes (Man United fontsize scale, px → rem). */
+  --p-size-text-12: 0.75rem;
+  --p-size-text-14: 0.875rem;
+  --p-size-text-16: 1rem;
+  --p-size-text-18: 1.125rem;
+  --p-size-text-20: 1.25rem;
+  --p-size-text-24: 1.5rem;
+
+  /* Fluid sizes: linear between the 360px and 1440px breakpoints. */
+  --p-size-text-fluid-56-120: clamp(3.5rem, 2.167rem + 5.926vw, 7.5rem);
+  --p-size-text-fluid-44-92: clamp(2.75rem, 1.75rem + 4.444vw, 5.75rem);
+  --p-size-text-fluid-40-60: clamp(2.5rem, 2.083rem + 1.852vw, 3.75rem);
+  --p-size-text-fluid-32-48: clamp(2rem, 1.667rem + 1.481vw, 3rem);
+  --p-size-text-fluid-24-32: clamp(1.5rem, 1.333rem + 0.7407vw, 2rem);
+  --p-size-text-fluid-20-28: clamp(1.25rem, 1.083rem + 0.7407vw, 1.75rem);
+
+  --p-leading-0-90: 0.9;
+  --p-leading-1-00: 1;
+  --p-leading-1-10: 1.1;
+  --p-leading-1-40: 1.4;
+  --p-leading-1-50: 1.5;
+  --p-leading-1-55: 1.55;
+
+  --p-tracking-tight: -0.01em;
+  --p-tracking-none: 0;
+  --p-tracking-wide: 0.04em;
+  --p-tracking-caps: 0.08em;
+
+  /* ------------------------------------------------------------------------
+     3. PRIMITIVES — space, size, layout
+     ------------------------------------------------------------------------ */
+
+  /* Man United p-size scale. Names are pixel values. */
+  --p-space-0: 0;
+  --p-space-2: 0.125rem;
+  --p-space-4: 0.25rem;
+  --p-space-8: 0.5rem;
+  --p-space-12: 0.75rem;
+  --p-space-16: 1rem;
+  --p-space-20: 1.25rem;
+  --p-space-24: 1.5rem;
+  --p-space-32: 2rem;
+  --p-space-40: 2.5rem;
+  --p-space-48: 3rem;
+  --p-space-64: 4rem;
+  --p-space-80: 5rem;
+  --p-space-96: 6rem;
+  --p-space-120: 7.5rem;
+  --p-space-160: 10rem;
+
+  /* Breakpoints (Man United). For reference only: CSS custom properties do
+     not work inside @media. Mirror these in the framework config. */
+  --p-breakpoint-s: 360px;
+  --p-breakpoint-m: 768px;
+  --p-breakpoint-l: 1024px;
+  --p-breakpoint-xl: 1440px;
+  --p-breakpoint-xxl: 1920px;
+
+  --p-radius-0: 0;
+  --p-radius-2: 2px;
+  --p-radius-4: 4px;
+  --p-radius-8: 8px;
+  --p-radius-12: 12px;
+  --p-radius-full: 999px;
+
+  --p-duration-fast: 120ms;
+  --p-duration-base: 200ms;
+  --p-duration-slow: 320ms;
+  --p-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+  --p-ease-exit: cubic-bezier(0.4, 0, 1, 1);
+
+  /* ------------------------------------------------------------------------
+     4. SEMANTIC — colour (default surface: dark)
+     ------------------------------------------------------------------------ */
+
+  --s-color-bg-page: var(--p-color-ink-900);
+  --s-color-bg-sunken: var(--p-color-ink-950); /* partner strip, footer */
+  --s-color-bg-surface: var(--p-color-ink-800); /* cards */
+  --s-color-bg-surface-hover: var(--p-color-ink-700);
+  --s-color-bg-inverse: var(--p-color-gold-500);
+  --s-color-bg-accent: var(--p-color-blue-500);
+
+  --s-color-text-primary: var(--p-color-white); /* 19.3:1 on page */
+  --s-color-text-secondary: var(--p-color-slate-300); /* 13.0:1 */
+  --s-color-text-muted: var(--p-color-slate-400); /* 7.5:1 */
+  --s-color-text-disabled: var(--p-color-slate-500); /* 4.1:1. Disabled only. */
+  --s-color-text-brand: var(--p-color-gold-500); /* 9.3:1 */
+  --s-color-text-link: var(--p-color-gold-300);
+  --s-color-text-link-hover: var(--p-color-gold-200);
+  --s-color-text-on-gold: var(--p-color-ink-900); /* 9.3:1. Never white on gold (2.1:1). */
+  --s-color-text-on-blue: var(--p-color-white); /* 8.4:1 */
+
+  --s-color-border-subtle: rgba(255, 255, 255, 0.08);
+  --s-color-border-default: rgba(255, 255, 255, 0.16);
+  --s-color-border-brand: var(--p-color-gold-500);
+
+  --s-color-focus: var(--p-color-blue-300); /* 7.0:1 on page */
+
+  --s-color-result-win: var(--p-color-green-400);
+  --s-color-result-draw: var(--p-color-slate-400);
+  --s-color-result-loss: var(--p-color-red-400);
+  --s-color-feedback-error: var(--p-color-red-400);
+  --s-color-feedback-success: var(--p-color-green-400);
+
+  /* Photo scrims. PRD §6 vignette value; directions follow Man United's
+     gradient primitives. Use over photography only, never as decoration. */
+  --s-scrim-up: linear-gradient(180deg, rgba(10, 14, 23, 0) 35%, rgba(10, 14, 23, 0.85) 100%);
+  --s-scrim-left: linear-gradient(90deg, rgba(10, 14, 23, 0.85) 0%, rgba(10, 14, 23, 0) 65%);
+  --s-scrim-full: rgba(10, 14, 23, 0.6);
+
+  /* ------------------------------------------------------------------------
+     5. SEMANTIC — type roles
+     Each role is family + size + leading + weight + tracking + case, the way
+     Arsenal defines its roles (display1, heading1, caption, tag...).
+     ------------------------------------------------------------------------ */
+
+  --s-font-display: var(--p-font-oswald);
+  --s-font-body: var(--p-font-inter);
+  --s-font-editorial: var(--p-font-fraunces);
+
+  /* Display XL: hero headline / hero fixture line (Man United 92–120px). */
+  --s-type-display-xl-size: var(--p-size-text-fluid-56-120);
+  --s-type-display-xl-leading: var(--p-leading-0-90);
+  --s-type-display-xl-weight: var(--p-weight-bold);
+  --s-type-display-xl-tracking: var(--p-tracking-tight);
+
+  /* Display L: section openers, final score. */
+  --s-type-display-l-size: var(--p-size-text-fluid-44-92);
+  --s-type-display-l-leading: var(--p-leading-0-90);
+  --s-type-display-l-weight: var(--p-weight-bold);
+  --s-type-display-l-tracking: var(--p-tracking-tight);
+
+  /* Headings: Atlanta City H1 60 / H2 48 / H3 32 at desktop. */
+  --s-type-h1-size: var(--p-size-text-fluid-40-60);
+  --s-type-h1-leading: var(--p-leading-1-00);
+  --s-type-h2-size: var(--p-size-text-fluid-32-48);
+  --s-type-h2-leading: var(--p-leading-1-00);
+  --s-type-h3-size: var(--p-size-text-fluid-24-32);
+  --s-type-h3-leading: var(--p-leading-1-10);
+  --s-type-heading-weight: var(--p-weight-bold);
+  --s-type-heading-tracking: var(--p-tracking-none);
+
+  /* Editorial: Atlanta City subtitle-1 (28/40) and subtitle-2 (18/28),
+     Fraunces semibold italic. Max one per section. */
+  --s-type-editorial-l-size: var(--p-size-text-fluid-20-28);
+  --s-type-editorial-l-leading: var(--p-leading-1-40);
+  --s-type-editorial-s-size: var(--p-size-text-18);
+  --s-type-editorial-s-leading: var(--p-leading-1-55);
+  --s-type-editorial-weight: var(--p-weight-semibold);
+
+  /* Body: Atlanta City body-1 18/28, body-2 16/24. */
+  --s-type-body-l-size: var(--p-size-text-18);
+  --s-type-body-l-leading: var(--p-leading-1-55);
+  --s-type-body-m-size: var(--p-size-text-16);
+  --s-type-body-m-leading: var(--p-leading-1-50);
+  --s-type-body-s-size: var(--p-size-text-14);
+  --s-type-body-s-leading: var(--p-leading-1-40);
+  --s-type-body-weight: var(--p-weight-regular);
+
+  /* Label: Arsenal caption role — uppercase, bold. Nav, buttons, kickers. */
+  --s-type-label-size: var(--p-size-text-14);
+  --s-type-label-leading: var(--p-leading-1-10);
+  --s-type-label-weight: var(--p-weight-bold);
+  --s-type-label-tracking: var(--p-tracking-wide);
+
+  /* Tag: result badges, position codes, competition names. */
+  --s-type-tag-size: var(--p-size-text-12);
+  --s-type-tag-leading: var(--p-leading-1-00);
+  --s-type-tag-weight: var(--p-weight-bold);
+  --s-type-tag-tracking: var(--p-tracking-caps);
+
+  /* ------------------------------------------------------------------------
+     6. SEMANTIC — space & layout
+     ------------------------------------------------------------------------ */
+
+  --s-space-inline-xs: var(--p-space-4);
+  --s-space-inline-s: var(--p-space-8);
+  --s-space-inline-m: var(--p-space-16);
+  --s-space-inline-l: var(--p-space-24);
+  --s-space-stack-xs: var(--p-space-8);
+  --s-space-stack-s: var(--p-space-16);
+  --s-space-stack-m: var(--p-space-24);
+  --s-space-stack-l: var(--p-space-40);
+  --s-space-stack-xl: var(--p-space-64);
+  --s-space-section: clamp(4rem, 2.833rem + 5.185vw, 7.5rem); /* 64 → 120px */
+
+  /* Grid: Man United 12-col container (1272px at xl). Margins and gutters
+     step up at each breakpoint — see the @media blocks at the end. */
+  --s-layout-max-width: 79.5rem; /* 1272px */
+  --s-layout-margin: 1rem; /* 16px, < 768 */
+  --s-layout-gutter: 0.5rem; /* 8px, < 768 */
+  --s-layout-nav-height: 4rem; /* 64px, < 1024 */
+
+  --s-radius-control: var(--p-radius-4); /* buttons, inputs (Atlanta City 5px) */
+  --s-radius-card: var(--p-radius-8); /* Arsenal's most-used radius */
+  --s-radius-media: var(--p-radius-0); /* photos stay square-cut */
+  --s-radius-pill: var(--p-radius-full); /* tags, filter chips */
+
+  --s-motion-hover: var(--p-duration-fast) var(--p-ease-standard);
+  --s-motion-reveal: var(--p-duration-slow) var(--p-ease-standard);
+
+  --s-focus-ring: 3px solid var(--s-color-focus); /* Arsenal: 3px solid, 3px offset */
+  --s-focus-offset: 3px;
+
+  --s-z-base: 0;
+  --s-z-raised: 10;
+  --s-z-nav: 100;
+  --s-z-overlay: 200;
+  --s-z-modal: 300;
+  --s-z-toast: 400;
+
+  /* ------------------------------------------------------------------------
+     7. COMPONENT tokens
+     ------------------------------------------------------------------------ */
+
+  /* Buttons */
+  --c-button-height: 3rem; /* 48px touch target */
+  --c-button-padding-x: var(--p-space-24);
+  --c-button-radius: var(--s-radius-control);
+  --c-button-primary-bg: var(--p-color-gold-500);
+  --c-button-primary-bg-hover: var(--p-color-gold-300);
+  --c-button-primary-text: var(--s-color-text-on-gold);
+  --c-button-secondary-bg: transparent;
+  --c-button-secondary-bg-hover: rgba(255, 255, 255, 0.08);
+  --c-button-secondary-border: var(--s-color-text-primary);
+  --c-button-secondary-text: var(--s-color-text-primary);
+
+  /* Nav */
+  --c-nav-bg: var(--s-color-bg-page);
+  --c-nav-border: var(--s-color-border-subtle);
+  --c-nav-link: var(--s-color-text-primary);
+  --c-nav-link-active: var(--s-color-text-brand);
+  --c-nav-indicator: var(--p-color-gold-500); /* 3px bar, like Atlanta City's red rule */
+
+  /* Cards (fixtures, players, kits) */
+  --c-card-bg: var(--s-color-bg-surface);
+  --c-card-bg-hover: var(--s-color-bg-surface-hover);
+  --c-card-border: var(--s-color-border-subtle);
+  --c-card-radius: var(--s-radius-card);
+  --c-card-padding: var(--p-space-24);
+
+  /* Player card */
+  --c-player-ratio: 3 / 4;
+  --c-player-number-color: rgba(229, 169, 60, 0.18);
+
+  /* Form inputs */
+  --c-input-height: 3rem;
+  --c-input-bg: var(--p-color-ink-950);
+  --c-input-border: var(--s-color-border-default);
+  --c-input-border-hover: rgba(255, 255, 255, 0.32);
+  --c-input-border-error: var(--s-color-feedback-error);
+  --c-input-text: var(--s-color-text-primary);
+  --c-input-placeholder: var(--s-color-text-muted);
+  --c-input-radius: var(--s-radius-control);
+
+  /* Result badge */
+  --c-badge-height: 1.5rem;
+  --c-badge-padding-x: var(--p-space-8);
+  --c-badge-radius: var(--p-radius-2);
+
+  /* Match Centre (SITE_BLUEPRINT §3.2) */
+  --c-match-bg: var(--p-color-blue-900);
+  --c-match-pattern: rgba(10, 58, 130, 0.55); /* blue-700 lines */
+  --c-countdown-bg: rgba(5, 7, 12, 0.55);
+  --c-score-bg: var(--p-color-ink-950);
+
+  /* Player card text scrim over the portrait */
+  --c-player-scrim: linear-gradient(180deg, rgba(22, 31, 48, 0) 0%, rgba(22, 31, 48, 0.92) 45%);
+
+  /* Kit cards: studio spotlight behind the product */
+  --c-kit-spotlight: radial-gradient(ellipse at 50% 45%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0) 65%);
+  --c-kit-shadow: 0 24px 24px rgba(0, 0, 0, 0.4);
+
+  /* Partner pitch box: gold-700 pattern lines at low opacity */
+  --c-pitch-pattern: rgba(180, 120, 36, 0.14);
+
+  /* Consent banner */
+  --c-banner-shadow: 0 16px 48px rgba(0, 0, 0, 0.6);
+
+  /* Club dropdown panel */
+  --c-dropdown-bg: var(--p-color-ink-800);
+
+  /* Page title banner (inner pages) */
+  --c-banner-bg: var(--p-color-blue-900);
+  --c-banner-pattern: rgba(229, 169, 60, 0.1);
+
+  /* Crest explorer (Club page) */
+  --c-crest-stage: radial-gradient(circle at 50% 45%, rgba(6, 26, 61, 0.9) 0%, rgba(5, 7, 12, 1) 70%);
+  --c-crest-glow: 0 0 2.5rem rgba(229, 169, 60, 0.25);
+  --c-crest-dim: rgba(5, 7, 12, 0.78);
+  --c-crest-hotspot: var(--p-color-gold-300);
+
+  /* Colour swatch cards (Club page): a white "paint chip" card */
+  --c-swatch-card-bg: var(--p-color-white);
+  --c-swatch-card-text: var(--p-color-ink-900);
+  --c-swatch-card-muted: #475569; /* slate-600: 7.6:1 on white */
+
+  /* 404 page: assistant referee's flag, chequered in club colours */
+  --c-flag-cloth: conic-gradient(
+      var(--p-color-gold-500) 25%,
+      var(--p-color-blue-500) 0 50%,
+      var(--p-color-gold-500) 0 75%,
+      var(--p-color-blue-500) 0
+    )
+    0 0 / 50% 50%;
+
+  /* Hero next-match strip */
+  --c-strip-bg: rgba(10, 14, 23, 0.72);
+
+  /* Partner strip */
+  --c-partner-bg: var(--s-color-bg-sunken);
+  --c-partner-logo-opacity: 0.6;
+  --c-partner-logo-opacity-hover: 1;
+}
+
+/* --------------------------------------------------------------------------
+   8. SURFACES — Man United colour-set pattern.
+   Put data-surface on a full-bleed band; content inside keeps using the same
+   --s-* names and gets the right colours for that background.
+   -------------------------------------------------------------------------- */
+
+[data-surface="gold"] {
+  --s-color-bg-page: var(--p-color-gold-500);
+  --s-color-bg-surface: var(--p-color-gold-300);
+  --s-color-bg-surface-hover: var(--p-color-gold-200);
+  --s-color-text-primary: var(--p-color-ink-900);
+  --s-color-text-secondary: var(--p-color-ink-800);
+  --s-color-text-muted: var(--p-color-ink-700);
+  --s-color-text-brand: var(--p-color-ink-900);
+  --s-color-text-link: var(--p-color-ink-900);
+  --s-color-text-link-hover: var(--p-color-ink-700);
+  --s-color-border-subtle: rgba(10, 14, 23, 0.12);
+  --s-color-border-default: rgba(10, 14, 23, 0.24);
+  --s-color-focus: var(--p-color-ink-900);
+  --c-button-primary-bg: var(--p-color-ink-900);
+  --c-button-primary-bg-hover: var(--p-color-ink-700);
+  --c-button-primary-text: var(--p-color-gold-500);
+  --c-button-secondary-border: var(--p-color-ink-900);
+  --c-button-secondary-text: var(--p-color-ink-900);
+  --c-button-secondary-bg-hover: rgba(10, 14, 23, 0.08);
+  background-color: var(--s-color-bg-page);
+  color: var(--s-color-text-primary);
+}
+
+[data-surface="blue"] {
+  --s-color-bg-page: var(--p-color-blue-500);
+  --s-color-bg-surface: var(--p-color-blue-700);
+  --s-color-bg-surface-hover: var(--p-color-blue-900);
+  --s-color-text-primary: var(--p-color-white);
+  --s-color-text-secondary: rgba(255, 255, 255, 0.85);
+  --s-color-text-muted: rgba(255, 255, 255, 0.72);
+  --s-color-text-brand: var(--p-color-white); /* gold on blue is 4.0:1: large text only */
+  --s-color-border-subtle: rgba(255, 255, 255, 0.16);
+  --s-color-border-default: rgba(255, 255, 255, 0.32);
+  --s-color-focus: var(--p-color-gold-300);
+  background-color: var(--s-color-bg-page);
+  color: var(--s-color-text-primary);
+}
+
+[data-surface="dark"] {
+  /* Resets to the default dark surface. For a card that sits inside a gold
+     or blue band (e.g. the Trials form card on the gold band). */
+  --s-color-bg-page: var(--p-color-ink-900);
+  --s-color-bg-surface: var(--p-color-ink-800);
+  --s-color-bg-surface-hover: var(--p-color-ink-700);
+  --s-color-text-primary: var(--p-color-white);
+  --s-color-text-secondary: var(--p-color-slate-300);
+  --s-color-text-muted: var(--p-color-slate-400);
+  --s-color-text-brand: var(--p-color-gold-500);
+  --s-color-text-link: var(--p-color-gold-300);
+  --s-color-text-link-hover: var(--p-color-gold-200);
+  --s-color-border-subtle: rgba(255, 255, 255, 0.08);
+  --s-color-border-default: rgba(255, 255, 255, 0.16);
+  --s-color-focus: var(--p-color-blue-300);
+  --c-button-primary-bg: var(--p-color-gold-500);
+  --c-button-primary-bg-hover: var(--p-color-gold-300);
+  --c-button-primary-text: var(--p-color-ink-900);
+  --c-button-secondary-border: var(--p-color-white);
+  --c-button-secondary-text: var(--p-color-white);
+  --c-button-secondary-bg-hover: rgba(255, 255, 255, 0.08);
+  background-color: var(--s-color-bg-page);
+  color: var(--s-color-text-primary);
+}
+
+[data-surface="black"] {
+  /* Pure black: the only background the current crest PNG sits on cleanly. */
+  --s-color-bg-page: var(--p-color-ink-1000);
+  --s-color-bg-surface: var(--p-color-ink-900);
+  background-color: var(--s-color-bg-page);
+  color: var(--s-color-text-primary);
+}
+
+/* --------------------------------------------------------------------------
+   9. RESPONSIVE layout tokens (breakpoints from --p-breakpoint-*)
+   -------------------------------------------------------------------------- */
+
+@media (min-width: 768px) {
+  :root {
+    --s-layout-margin: 2rem; /* 32px */
+    --s-layout-gutter: 1rem; /* 16px */
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --s-layout-margin: 2.5rem; /* 40px */
+    --s-layout-nav-height: 5rem; /* 80px */
+  }
+}
+
+@media (min-width: 1440px) {
+  :root {
+    --s-layout-margin: 5.25rem; /* 84px */
+    --s-layout-gutter: 1.5rem; /* 24px */
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --p-duration-fast: 0ms;
+    --p-duration-base: 0ms;
+    --p-duration-slow: 0ms;
+  }
+}

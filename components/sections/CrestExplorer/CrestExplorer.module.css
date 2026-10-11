@@ -1,0 +1,232 @@
+.wrap {
+  background-color: var(--s-color-bg-sunken);
+}
+
+.layout {
+  display: grid;
+  gap: var(--s-space-stack-l);
+  align-items: center;
+}
+
+/* ---------- Stage: crest zooms to the chosen part ---------- */
+
+.stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  max-width: 34rem;
+  width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  background: var(--c-crest-stage);
+  border: 1px solid var(--s-color-border-subtle);
+  border-radius: var(--c-card-radius);
+}
+
+.crestWrap {
+  position: relative;
+  width: 62%;
+  transform-origin: var(--x) var(--y);
+  transform: scale(var(--zoom));
+  transition: transform 600ms var(--p-ease-standard);
+}
+
+.crest {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(var(--c-crest-glow));
+}
+
+/* Spotlight centred on the part; only shows while zoomed in */
+.spotlight {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    /* crest is 62% of the stage width, 400:501, centred: map the part's position into the stage */ circle at calc(19% + var(--x) * 0.62)
+      calc(11.2% + var(--y) * 0.777),
+    transparent 0,
+    transparent 22%,
+    var(--c-crest-dim) 46%
+  );
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 400ms var(--p-ease-standard);
+}
+
+.stage[data-zoomed] .spotlight {
+  opacity: 1;
+}
+
+.hotspot {
+  position: absolute;
+  width: 1.75rem;
+  height: 1.75rem;
+  margin: -0.875rem 0 0 -0.875rem;
+  padding: 0;
+  background: transparent;
+  border: 2px solid var(--c-crest-hotspot);
+  border-radius: var(--s-radius-pill);
+  transform: scale(calc(1 / var(--zoom)));
+  transition:
+    opacity var(--s-motion-hover),
+    background-color var(--s-motion-hover);
+}
+
+.hotspot::after {
+  content: "";
+  position: absolute;
+  inset: 5px;
+  background-color: var(--c-crest-hotspot);
+  border-radius: inherit;
+}
+
+.hotspot:not([data-active])::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border: 2px solid var(--c-crest-hotspot);
+  border-radius: inherit;
+  animation: ping 2.2s var(--p-ease-standard) infinite;
+}
+
+.hotspot[data-active] {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.stage[data-zoomed] .hotspot:not([data-active]) {
+  opacity: 0;
+  pointer-events: none;
+}
+
+@keyframes ping {
+  0% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+
+  80%,
+  100% {
+    opacity: 0;
+    transform: scale(2);
+  }
+}
+
+/* ---------- Panel: tabs + story ---------- */
+
+.panel {
+  display: grid;
+  gap: var(--s-space-stack-m);
+}
+
+.tabs {
+  display: grid;
+  border-top: 1px solid var(--s-color-border-subtle);
+}
+
+.tab {
+  display: flex;
+  align-items: baseline;
+  gap: var(--p-space-16);
+  padding: var(--p-space-16) 0;
+  background: none;
+  border: 0;
+  border-bottom: 1px solid var(--s-color-border-subtle);
+  color: var(--s-color-text-muted);
+  font-family: var(--s-font-display);
+  font-size: var(--s-type-h3-size);
+  font-weight: var(--s-type-heading-weight);
+  line-height: var(--s-type-h3-leading);
+  text-align: left;
+  text-transform: uppercase;
+  transition: color var(--s-motion-hover);
+}
+
+.tab:hover {
+  color: var(--s-color-text-primary);
+}
+
+.tab[aria-selected="true"] {
+  color: var(--s-color-text-primary);
+}
+
+.tabIndex {
+  color: var(--s-color-text-brand);
+  font-family: var(--s-font-body);
+  font-size: var(--s-type-tag-size);
+  font-weight: var(--s-type-tag-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+}
+
+.story {
+  display: grid;
+  gap: var(--p-space-12);
+  padding: var(--p-space-24);
+  background-color: var(--c-card-bg);
+  border-left: 3px solid var(--s-color-border-brand);
+  border-radius: var(--s-radius-control);
+  animation: rise var(--s-motion-reveal);
+}
+
+.storyTitle {
+  color: var(--s-color-text-brand);
+  font-size: var(--s-type-h3-size);
+}
+
+.storyText {
+  color: var(--s-color-text-secondary);
+  font-family: var(--s-font-editorial);
+  font-size: var(--s-type-editorial-l-size);
+  font-style: italic;
+  font-weight: var(--s-type-editorial-weight);
+  line-height: var(--s-type-editorial-l-leading);
+}
+
+.progress {
+  display: flex;
+  gap: var(--p-space-4);
+}
+
+.progress span {
+  width: 1.5rem;
+  height: 3px;
+  background-color: var(--s-color-border-default);
+  border-radius: 2px;
+}
+
+.progress span[data-active] {
+  background-color: var(--s-color-border-brand);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .layout {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--p-space-64);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .crestWrap,
+  .spotlight {
+    transition: none;
+  }
+
+  .hotspot::before,
+  .story {
+    animation: none !important;
+  }
+}

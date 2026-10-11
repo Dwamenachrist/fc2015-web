@@ -1,0 +1,115 @@
+.list {
+  display: grid;
+  border-top: 1px solid var(--s-color-border-subtle);
+}
+
+.row {
+  display: grid;
+  grid-template-areas:
+    "date badge"
+    "teams teams"
+    "where where";
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: var(--p-space-8) var(--p-space-16);
+  padding-block: var(--p-space-16);
+  border-bottom: 1px solid var(--s-color-border-subtle);
+}
+
+.date {
+  grid-area: date;
+  color: var(--s-color-text-secondary);
+  font-size: var(--s-type-body-s-size);
+  font-weight: var(--p-weight-semibold);
+}
+
+.teams {
+  grid-area: teams;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+  align-items: center;
+  gap: var(--p-space-12);
+  font-weight: var(--p-weight-semibold);
+}
+
+.teams > span:first-child {
+  text-align: right;
+}
+
+.score,
+.time {
+  padding: var(--p-space-4) var(--p-space-12);
+  background-color: var(--c-score-bg);
+  border-radius: var(--s-radius-control);
+  font-family: var(--s-font-display);
+  font-size: var(--p-size-text-20);
+  font-weight: var(--s-type-heading-weight);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+
+.time {
+  background-color: transparent;
+  border: 1px solid var(--s-color-border-default);
+}
+
+.where {
+  grid-area: where;
+  color: var(--s-color-text-muted);
+  font-size: var(--s-type-body-s-size);
+}
+
+.comp,
+.badge {
+  grid-area: badge;
+  font-size: var(--s-type-tag-size);
+  font-weight: var(--s-type-tag-weight);
+  letter-spacing: var(--s-type-tag-tracking);
+  text-transform: uppercase;
+}
+
+.comp {
+  color: var(--s-color-text-muted);
+}
+
+.badge {
+  display: inline-grid;
+  place-items: center;
+  min-width: 3.25rem;
+  height: var(--c-badge-height);
+  padding-inline: var(--c-badge-padding-x);
+  border: 1px solid currentcolor;
+  border-radius: var(--c-badge-radius);
+}
+
+.badge[data-outcome="WIN"] {
+  color: var(--s-color-result-win);
+}
+
+.badge[data-outcome="DRAW"] {
+  color: var(--s-color-result-draw);
+}
+
+.badge[data-outcome="LOSS"] {
+  color: var(--s-color-result-loss);
+}
+
+.empty {
+  color: var(--s-color-text-secondary);
+}
+
+.spacer {
+  height: var(--s-space-stack-xl);
+}
+
+@media (min-width: 900px) {
+  .row {
+    grid-template-areas: "date teams where badge";
+    grid-template-columns: 11rem minmax(0, 1fr) 13rem 7rem;
+  }
+
+  .comp,
+  .badge {
+    justify-self: end;
+  }
+}

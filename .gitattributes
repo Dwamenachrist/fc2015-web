@@ -1,0 +1,12 @@
+# Store text with LF line endings so Windows and Mac/Linux machines produce identical diffs.
+* text=auto eol=lf
+
+*.png  binary
+*.jpg  binary
+*.jpeg binary
+*.webp binary
+*.avif binary
+*.ico  binary
+*.pdf  binary
+*.ttf  binary
+*.woff2 binary

@@ -1,0 +1,32 @@
+.summary {
+  display: grid;
+  gap: var(--p-space-8);
+  padding: var(--p-space-16);
+  border: 1px solid var(--s-color-feedback-error);
+  border-left-width: 4px;
+  border-radius: var(--s-radius-control);
+  background-color: var(--c-input-bg);
+}
+
+.summary:focus-visible {
+  outline: var(--s-focus-ring);
+  outline-offset: var(--s-focus-offset);
+}
+
+.summaryTitle {
+  font-weight: var(--p-weight-bold);
+}
+
+.list {
+  display: grid;
+  gap: var(--p-space-4);
+  padding-left: var(--p-space-20);
+  color: var(--s-color-text-secondary);
+  font-size: var(--s-type-body-s-size);
+}
+
+.list a {
+  color: var(--s-color-text-link);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}

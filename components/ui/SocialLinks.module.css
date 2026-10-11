@@ -1,0 +1,35 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--p-space-12);
+}
+
+.list a {
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--s-color-border-default);
+  border-radius: var(--s-radius-pill);
+  transition:
+    border-color var(--s-motion-hover),
+    color var(--s-motion-hover);
+}
+
+.list a:hover {
+  border-color: var(--s-color-border-brand);
+  color: var(--s-color-text-brand);
+}
+
+.md a {
+  width: var(--p-space-48);
+  height: var(--p-space-48);
+}
+
+.sm a {
+  width: var(--p-space-40);
+  height: var(--p-space-40);
+}
+
+.sm svg {
+  width: 1.125rem;
+  height: 1.125rem;
+}

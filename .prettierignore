@@ -1,0 +1,9 @@
+# Docs are hand-formatted (tables, wireframes)
+*.md
+package-lock.json
+.next/
+node_modules/
+public/
+assets-src/
+test-results/
+playwright-report/

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="Player photo coming soon">
+  <defs>
+    <linearGradient id="fill" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2C3A55"/>
+      <stop offset="1" stop-color="#1F2A40"/>
+    </linearGradient>
+    <linearGradient id="rim" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#B47824" stop-opacity="0"/>
+      <stop offset=".5" stop-color="#E5A93C" stop-opacity=".55"/>
+      <stop offset="1" stop-color="#B47824" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset=".55" stop-color="#fff"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="m"><rect width="300" height="400" fill="url(#fade)"/></mask>
+  </defs>
+  <g mask="url(#m)">
+    <!-- Head, neck and shoulders as one bust silhouette (Man United portrait framing) -->
+    <path fill="url(#fill)" d="M150 70c-35 0-58 27-58 64 0 30 12 55 30 69v22c0 8-5 14-13 17-38 11-79 30-92 64-6 17-9 50-9 94h284c0-44-3-77-9-94-13-34-54-53-92-64-8-3-13-9-13-17v-22c18-14 30-39 30-69 0-37-23-64-58-64Z"/>
+    <!-- Gold rim light along the head and shoulders -->
+    <path fill="none" stroke="url(#rim)" stroke-width="2" d="M92 134c0-37 23-64 58-64s58 27 58 64"/>
+    <path fill="none" stroke="url(#rim)" stroke-width="2" d="M17 310c13-34 54-53 92-64M283 310c-13-34-54-53-92-64"/>
+    <!-- Kit collar and crest on the left chest -->
+    <path fill="none" stroke="#E5A93C" stroke-opacity=".5" stroke-width="3" d="M122 242l28 30 28-30"/>
+    <path fill="none" stroke="#E5A93C" stroke-opacity=".45" stroke-width="2" d="M196 300h20v9c0 10-6 16-10 18-4-2-10-8-10-18z"/>
+  </g>
+</svg>

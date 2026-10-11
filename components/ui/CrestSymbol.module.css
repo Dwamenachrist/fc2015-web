@@ -1,0 +1,16 @@
+.icon {
+  width: 3rem;
+  height: 3rem;
+}
+
+.line {
+  fill: none;
+  stroke: var(--s-color-text-brand);
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.blue {
+  fill: var(--s-color-bg-accent);
+}
