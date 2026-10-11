@@ -1,4 +1,4 @@
-.hero {
+.stage {
   position: relative;
   isolation: isolate;
   display: flex;
@@ -12,6 +12,23 @@
   z-index: -2;
   object-fit: cover;
   object-position: 62% 50%;
+}
+
+/* Slow push-in so the hero moves until the club's video arrives. */
+@media (prefers-reduced-motion: no-preference) {
+  .photo {
+    animation: push 24s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes push {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.08);
+  }
 }
 
 .video {
@@ -37,25 +54,11 @@
 }
 
 .content {
-  display: grid;
-  gap: var(--s-space-stack-m);
-  padding-block: var(--s-space-stack-l);
-}
-
-.crest {
-  justify-self: center;
-  width: auto;
-  height: 9rem;
-  filter: drop-shadow(var(--c-kit-shadow));
-}
-
-.copy {
-  display: grid;
-  justify-items: start;
-  gap: var(--s-space-stack-xs);
+  padding-block: var(--s-space-stack-xl) var(--s-space-stack-l);
 }
 
 .title {
+  max-width: 100%;
   text-wrap: balance;
   font-size: var(--s-type-h1-size);
   font-weight: var(--s-type-display-l-weight);
@@ -67,10 +70,18 @@
   white-space: nowrap;
 }
 
+.intro {
+  display: grid;
+  gap: var(--s-space-stack-s);
+  padding-block: var(--s-space-stack-m);
+}
+
 .subtitle {
   color: var(--s-color-text-secondary);
-  font-size: var(--s-type-body-s-size);
-  line-height: var(--s-type-body-s-leading);
+  font-size: var(--s-type-label-size);
+  font-weight: var(--s-type-label-weight);
+  letter-spacing: var(--s-type-label-tracking);
+  text-transform: uppercase;
 }
 
 .actions {
@@ -78,7 +89,6 @@
   flex-wrap: wrap;
   align-items: center;
   gap: var(--p-space-8) var(--s-space-inline-l);
-  margin-top: var(--s-space-stack-xs);
 }
 
 .textLink {
@@ -157,7 +167,7 @@
 }
 
 @media (min-width: 768px) {
-  .hero {
+  .stage {
     min-height: min(88svh, 60rem);
   }
 
@@ -165,21 +175,8 @@
     object-position: 50% 50%;
   }
 
-  .content {
-    flex: 1;
+  .intro {
     grid-template-columns: 1fr auto;
-  }
-
-  .crest {
-    grid-column: 2;
-    grid-row: 1;
-    align-self: center;
-    height: clamp(12rem, 22vw, 18rem);
-  }
-
-  .copy {
-    grid-column: 1;
-    grid-row: 1;
-    align-self: end;
+    align-items: center;
   }
 }

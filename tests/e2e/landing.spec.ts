@@ -11,6 +11,7 @@ test.describe("site structure (DECISIONS.md 11 Oct)", () => {
   });
 
   test("every page loads, has one h1 and its own title", async ({ page }) => {
+    test.slow(); // visits every page
     const titles = new Set<string>();
     for (const path of PAGES) {
       const res = await page.goto(path);
@@ -30,6 +31,7 @@ test.describe("site structure (DECISIONS.md 11 Oct)", () => {
   });
 
   test("no horizontal scroll on any page", async ({ page }) => {
+    test.slow(); // visits every page
     for (const path of PAGES) {
       await page.goto(path);
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
@@ -38,6 +40,7 @@ test.describe("site structure (DECISIONS.md 11 Oct)", () => {
   });
 
   test("no serious or critical accessibility violations", async ({ page }) => {
+    test.slow(); // visits every page
     for (const path of PAGES) {
       await page.goto(path);
       const results = await new AxeBuilder({ page }).analyze();
