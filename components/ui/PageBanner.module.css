@@ -3,7 +3,6 @@
   isolation: isolate;
   overflow: hidden;
   background-color: var(--c-banner-bg);
-  border-bottom: 3px solid var(--s-color-border-brand);
 }
 
 .pattern {

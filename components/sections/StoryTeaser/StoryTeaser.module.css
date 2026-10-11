@@ -7,7 +7,6 @@
   overflow: hidden;
   background-color: var(--c-card-bg);
   border: 1px solid var(--c-card-border);
-  border-bottom: 3px solid var(--s-color-border-brand);
   border-radius: var(--c-card-radius);
 }
 

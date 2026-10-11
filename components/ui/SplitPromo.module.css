@@ -5,7 +5,6 @@
 .card {
   display: grid;
   overflow: hidden;
-  border-bottom: 3px solid var(--s-color-border-brand);
   border-radius: var(--c-card-radius);
 }
 

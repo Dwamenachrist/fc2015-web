@@ -165,7 +165,6 @@
   gap: var(--p-space-12);
   padding: var(--p-space-24);
   background-color: var(--c-card-bg);
-  border-left: 3px solid var(--s-color-border-brand);
   border-radius: var(--s-radius-control);
   animation: rise var(--s-motion-reveal);
 }

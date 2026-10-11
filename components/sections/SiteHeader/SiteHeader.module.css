@@ -134,7 +134,6 @@
   padding: var(--p-space-12);
   background-color: var(--c-dropdown-bg);
   border: 1px solid var(--s-color-border-default);
-  border-top: 3px solid var(--c-nav-indicator);
   border-radius: 0 0 var(--s-radius-card) var(--s-radius-card);
   box-shadow: var(--c-banner-shadow);
 }

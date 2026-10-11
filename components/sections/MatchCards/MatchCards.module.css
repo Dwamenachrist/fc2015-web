@@ -21,8 +21,6 @@
 
 .label {
   justify-self: stretch;
-  padding-bottom: var(--p-space-8);
-  border-bottom: 1px solid var(--s-color-border-subtle);
   color: var(--s-color-text-brand);
   font-family: var(--s-font-body);
   font-size: var(--s-type-label-size);
