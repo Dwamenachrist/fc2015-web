@@ -1,0 +1,24 @@
+.toggle {
+  display: inline-grid;
+  flex-shrink: 0;
+  place-items: center;
+  width: var(--p-space-48);
+  height: var(--p-space-48);
+  background: none;
+  border: 1px solid var(--s-color-border-default);
+  border-radius: var(--s-radius-control);
+  color: var(--s-color-text-primary);
+  transition:
+    border-color var(--s-motion-hover),
+    color var(--s-motion-hover);
+}
+
+.toggle:hover {
+  border-color: var(--s-color-border-brand);
+  color: var(--s-color-text-brand);
+}
+
+.toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}

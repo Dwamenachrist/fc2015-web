@@ -6,7 +6,7 @@ import styles from "./PageBanner.module.css";
  */
 export function PageBanner({ kicker, title, subtitle }: { kicker: string; title: string; subtitle?: string }) {
   return (
-    <header className={styles.banner}>
+    <header className={styles.banner} data-tone="dark">
       <span className={`brand-pattern ${styles.pattern}`} aria-hidden="true" />
       <div className={`container ${styles.inner}`}>
         <p className={styles.kicker}>{kicker}</p>

@@ -48,7 +48,7 @@ export function SquadRail({ players }: { players: Person[] }) {
       </div>
       <ul ref={track} role="list" className={styles.track} aria-label="Players">
         {players.map((p) => (
-          <li key={p.id} className={styles.card}>
+          <li key={p.id} className={styles.card} data-tone="dark">
             <Link href={`/squad?squad=${p.role}`} className={styles.link}>
               <div className={styles.portrait}>
                 <Image

@@ -35,7 +35,7 @@ export function MatchCenter({ next, results }: { next?: Fixture; results: Fixtur
 
         <div className={styles.grid}>
           {next ? (
-            <article className={styles.next} aria-label="Next match">
+            <article className={styles.next} aria-label="Next match" data-tone="dark">
               <span className={`brand-pattern ${styles.pattern}`} aria-hidden="true" />
               <header className={styles.nextMeta}>
                 <span className={styles.competition}>{next.competition}</span>

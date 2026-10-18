@@ -50,15 +50,26 @@
   --p-color-ink-700: #1f2a40;
   --p-color-ink-600: #2c3a55;
 
+  /* Paper: cool off-whites for the light theme, tinted toward the ink blue. */
+  --p-color-paper-50: #f5f6f8; /* light page */
+  --p-color-paper-100: #eceff4; /* light sunken bands */
+
+  --p-color-slate-50: #f8fafc;
   --p-color-slate-100: #f1f5f9;
+  --p-color-slate-200: #e2e8f0;
   --p-color-slate-300: #cbd5e1;
   --p-color-slate-400: #94a3b8; /* PRD muted text */
   --p-color-slate-500: #64748b;
+  --p-color-slate-600: #475569;
+  --p-color-slate-700: #334155;
   --p-color-white: #ffffff;
 
-  /* Status: match results (WIN / DRAW / LOSS) and form feedback. */
+  /* Status: match results (WIN / DRAW / LOSS) and form feedback.
+     400s are for dark backgrounds; 700/600 are the light-theme text versions. */
   --p-color-green-400: #3ddc84;
+  --p-color-green-700: #15803d;
   --p-color-red-400: #f05252;
+  --p-color-red-600: #dc2626;
 
   /* ------------------------------------------------------------------------
      2. PRIMITIVES — type
@@ -391,6 +402,58 @@
   --c-partner-logo-opacity-hover: 1;
 }
 
+:root {
+  color-scheme: dark;
+}
+
+/* --------------------------------------------------------------------------
+   7b. LIGHT THEME — set data-theme="light" on <html> (ThemeToggle does this).
+   Dark stays the default. Only colour tokens change; anything that sits on a
+   fixed dark background (hero, footer, Match Centre, banners, player cards)
+   is marked data-tone="dark" and keeps the dark values (section 8).
+   Gold is never text on white (2.1:1): brand text turns blue, gold stays for
+   fills, rules and buttons.
+   -------------------------------------------------------------------------- */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+
+  --s-color-bg-page: var(--p-color-paper-50);
+  --s-color-bg-sunken: var(--p-color-paper-100);
+  --s-color-bg-surface: var(--p-color-white); /* white cards on off-white page */
+  --s-color-bg-surface-hover: var(--p-color-slate-50);
+
+  --s-color-text-primary: var(--p-color-ink-900); /* 18.0:1 on page */
+  --s-color-text-secondary: var(--p-color-slate-700); /* 9.6:1 */
+  --s-color-text-muted: var(--p-color-slate-600); /* 7.0:1 */
+  --s-color-text-disabled: var(--p-color-slate-500); /* 4.4:1. Disabled only. */
+  --s-color-text-brand: var(--p-color-blue-500); /* 8.1:1 */
+  --s-color-text-link: var(--p-color-blue-500);
+  --s-color-text-link-hover: var(--p-color-blue-700);
+
+  --s-color-border-subtle: rgba(10, 14, 23, 0.08);
+  --s-color-border-default: rgba(10, 14, 23, 0.16);
+
+  --s-color-focus: var(--p-color-blue-500);
+
+  --s-color-result-win: var(--p-color-green-700);
+  --s-color-result-draw: var(--p-color-slate-600);
+  --s-color-result-loss: var(--p-color-red-600);
+  --s-color-feedback-error: var(--p-color-red-600);
+  --s-color-feedback-success: var(--p-color-green-700);
+
+  --c-button-secondary-bg-hover: rgba(10, 14, 23, 0.06);
+  --c-nav-bg: var(--p-color-white);
+  --c-player-number-color: rgba(0, 71, 171, 0.1);
+  --c-input-bg: var(--p-color-white);
+  --c-input-border-hover: rgba(10, 14, 23, 0.32);
+  --c-score-bg: var(--p-color-slate-200);
+  --c-countdown-bg: var(--p-color-slate-200);
+  --c-dropdown-bg: var(--p-color-white);
+  --c-banner-shadow: 0 16px 48px rgba(10, 14, 23, 0.14);
+  --c-partner-logo-opacity: 0.75;
+}
+
 /* --------------------------------------------------------------------------
    8. SURFACES — Man United colour-set pattern.
    Put data-surface on a full-bleed band; content inside keeps using the same
@@ -431,28 +494,6 @@
   --s-color-border-subtle: rgba(255, 255, 255, 0.16);
   --s-color-border-default: rgba(255, 255, 255, 0.32);
   --s-color-focus: var(--p-color-gold-300);
-  background-color: var(--s-color-bg-page);
-  color: var(--s-color-text-primary);
-}
-
-[data-surface="dark"] {
-  /* Resets to the default dark surface. For a card that sits inside a gold
-     or blue band (e.g. the Trials form card on the gold band). */
-  --s-color-bg-page: var(--p-color-ink-900);
-  --s-color-bg-surface: var(--p-color-ink-800);
-  --s-color-bg-surface-hover: var(--p-color-ink-700);
-  --s-color-text-primary: var(--p-color-white);
-  --s-color-text-secondary: var(--p-color-slate-300);
-  --s-color-text-muted: var(--p-color-slate-400);
-  --s-color-text-brand: var(--p-color-gold-500);
-  --s-color-text-link: var(--p-color-gold-300);
-  --s-color-text-link-hover: var(--p-color-gold-200);
-  --s-color-border-subtle: rgba(255, 255, 255, 0.08);
-  --s-color-border-default: rgba(255, 255, 255, 0.16);
-  --s-color-focus: var(--p-color-blue-300);
-  --c-button-primary-bg: var(--p-color-gold-500);
-  --c-button-primary-bg-hover: var(--p-color-gold-300);
-  --c-button-primary-text: var(--p-color-ink-900);
   --c-button-secondary-border: var(--p-color-white);
   --c-button-secondary-text: var(--p-color-white);
   --c-button-secondary-bg-hover: rgba(255, 255, 255, 0.08);
@@ -460,12 +501,63 @@
   color: var(--s-color-text-primary);
 }
 
+/* Full reset to the dark values, whatever the page theme.
+   data-surface="dark" / "black" also paint the background; data-tone="dark"
+   only resets the tokens, for a component that paints its own fixed dark
+   background (Match Centre, page banners, player cards). */
+[data-surface="dark"],
+[data-surface="black"],
+[data-tone="dark"] {
+  color-scheme: dark;
+  --s-color-bg-page: var(--p-color-ink-900);
+  --s-color-bg-sunken: var(--p-color-ink-950);
+  --s-color-bg-surface: var(--p-color-ink-800);
+  --s-color-bg-surface-hover: var(--p-color-ink-700);
+  --s-color-text-primary: var(--p-color-white);
+  --s-color-text-secondary: var(--p-color-slate-300);
+  --s-color-text-muted: var(--p-color-slate-400);
+  --s-color-text-disabled: var(--p-color-slate-500);
+  --s-color-text-brand: var(--p-color-gold-500);
+  --s-color-text-link: var(--p-color-gold-300);
+  --s-color-text-link-hover: var(--p-color-gold-200);
+  --s-color-border-subtle: rgba(255, 255, 255, 0.08);
+  --s-color-border-default: rgba(255, 255, 255, 0.16);
+  --s-color-focus: var(--p-color-blue-300);
+  --s-color-result-win: var(--p-color-green-400);
+  --s-color-result-draw: var(--p-color-slate-400);
+  --s-color-result-loss: var(--p-color-red-400);
+  --s-color-feedback-error: var(--p-color-red-400);
+  --s-color-feedback-success: var(--p-color-green-400);
+  --c-button-primary-bg: var(--p-color-gold-500);
+  --c-button-primary-bg-hover: var(--p-color-gold-300);
+  --c-button-primary-text: var(--p-color-ink-900);
+  --c-button-secondary-border: var(--p-color-white);
+  --c-button-secondary-text: var(--p-color-white);
+  --c-button-secondary-bg-hover: rgba(255, 255, 255, 0.08);
+  --c-card-bg: var(--p-color-ink-800);
+  --c-card-bg-hover: var(--p-color-ink-700);
+  --c-card-border: rgba(255, 255, 255, 0.08);
+  --c-input-bg: var(--p-color-ink-950);
+  --c-input-border: rgba(255, 255, 255, 0.16);
+  --c-input-border-hover: rgba(255, 255, 255, 0.32);
+  --c-input-border-error: var(--p-color-red-400);
+  --c-input-text: var(--p-color-white);
+  --c-input-placeholder: var(--p-color-slate-400);
+  --c-score-bg: var(--p-color-ink-950);
+  --c-countdown-bg: rgba(5, 7, 12, 0.55);
+  --c-partner-bg: var(--p-color-ink-950);
+  color: var(--s-color-text-primary);
+}
+
+[data-surface="dark"],
+[data-surface="black"] {
+  background-color: var(--s-color-bg-page);
+}
+
 [data-surface="black"] {
   /* Pure black: the only background the current crest PNG sits on cleanly. */
   --s-color-bg-page: var(--p-color-ink-1000);
   --s-color-bg-surface: var(--p-color-ink-900);
-  background-color: var(--s-color-bg-page);
-  color: var(--s-color-text-primary);
 }
 
 /* --------------------------------------------------------------------------

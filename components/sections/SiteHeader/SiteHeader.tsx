@@ -7,6 +7,7 @@ import type { Club } from "@/content/schema";
 import { Crest } from "@/components/ui/Crest";
 import { Button } from "@/components/ui/Button";
 import { SocialLinks } from "@/components/ui/SocialLinks";
+import { ThemeToggle } from "@/components/ui/ThemeToggle";
 import { ChevronDown, Close, Menu } from "@/components/ui/Icons";
 import styles from "./SiteHeader.module.css";
 
@@ -149,6 +150,8 @@ export function SiteHeader({ socials }: { socials: Club["socials"] }) {
             Join Open Trials
           </Button>
         </div>
+
+        <ThemeToggle />
 
         <button
           ref={menuButton}

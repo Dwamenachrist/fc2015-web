@@ -7,6 +7,7 @@ import { SiteFooter } from "@/components/sections/SiteFooter/SiteFooter";
 import { ConsentBanner } from "@/components/sections/ConsentBanner/ConsentBanner";
 import { club } from "@/content/club";
 import { nonEssentialScripts, SITE_URL } from "@/content/site";
+import { THEME_COLOR, THEME_INIT_SCRIPT } from "@/lib/theme";
 import "./globals.css";
 
 // Fonts per DESIGN_TOKENS.md §3.1. tokens.css reads these variables.
@@ -30,13 +31,17 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0A0E17",
-  colorScheme: "dark",
+  themeColor: THEME_COLOR.dark,
+  colorScheme: "dark light",
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en-GH" className={`${oswald.variable} ${inter.variable} ${fraunces.variable}`}>
+    // The theme script sets data-theme on <html> before React hydrates, hence suppressHydrationWarning.
+    <html lang="en-GH" className={`${oswald.variable} ${inter.variable} ${fraunces.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: THEME_INIT_SCRIPT }} />
+      </head>
       <body>
         <a href="#main" className="skip-link">
           Skip to content
