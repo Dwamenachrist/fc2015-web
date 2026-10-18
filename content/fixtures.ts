@@ -21,7 +21,7 @@ export const fixtures = z.array(Fixture).parse(
       kickoff: "2026-09-13T15:00:00Z",
       home: true,
       venue: homeVenue,
-      result: { for: 2, against: 1 },
+      result: { for: 2, against: 0 },
     },
     {
       id: "2026-09-20",
@@ -31,7 +31,7 @@ export const fixtures = z.array(Fixture).parse(
       kickoff: "2026-09-20T15:00:00Z",
       home: false,
       venue: awayVenue,
-      result: { for: 0, against: 0 },
+      result: { for: 2, against: 1 },
     },
     {
       id: "2026-09-27",
@@ -41,7 +41,7 @@ export const fixtures = z.array(Fixture).parse(
       kickoff: "2026-09-27T15:00:00Z",
       home: true,
       venue: homeVenue,
-      result: { for: 1, against: 3 },
+      result: { for: 3, against: 1 },
     },
     {
       id: "2026-10-25",
